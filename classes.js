@@ -32,19 +32,17 @@
 //Code Here
 class Employee {
   constructor(first_name, last_name, email, age) {
-    this.first_name = first_name
-    this.last_name = last_name
-    this.email = email
-    this.age = age
-    this.makeWidget = function() {
-     return `${this.first_name} ${this.last_name} Widget`
-    }
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+    this.makeWidget = function () {
+      return `${this.first_name} ${this.last_name} Widget`;
+    };
   }
 }
 
-let myEmployee = new Employee('Natalie', 'Smith', 'nat@smith.org', 21)
-
-
+let myEmployee = new Employee("Natalie", "Smith", "nat@smith.org", 21);
 
 ////////// PROBLEM 2 //////////
 
@@ -64,14 +62,15 @@ let myEmployee = new Employee('Natalie', 'Smith', 'nat@smith.org', 21)
 //Code Here
 class Manager extends Employee {
   constructor(first_name, last_name, email, age) {
-  super(first_name, last_name, email, age)
-  this.reports = []
-  this.hire = function(employee) {
-    this.reports.push(employee)
+    super(first_name, last_name, email, age);
+    this.reports = [];
   }
-  this.fire = function(index) {
-    this.reports.splice(index, 1)
+  hire(employee) {
+    this.reports.push(employee);
   }
+
+  fire(index) {
+    this.reports.splice(index, 1);
   }
 }
 
@@ -80,7 +79,8 @@ class Manager extends Employee {
 
 /*
   Managers for Widget Co. get promoted when they get more employees, and get a bonus when they fire employees.
-  create a class ProgressiveManager that extends Manager.  A Progressive Manager has all of the same properties as a manager with the following additional properties:
+  create a class ProgressiveManager that extends Manager.  A Progressive Manager has all of the same properties
+  as a manager with the following additional properties:
     - title - default 'Not a manager'
     - bonus - default 0
 
@@ -99,35 +99,35 @@ class Manager extends Employee {
 
 // //Code Here
 class ProgressiveManager extends Manager {
-  constructor (first_name, last_name, email, age) {
-    super (first_name, last_name, email, age);
-    this.title = 'Not a manager';
+  constructor(first_name, last_name, email, age) {
+    super(first_name, last_name, email, age);
+    this.title = "Not a manager";
     this.bonus = 0;
   }
-  
+
   hire(employee) {
-    super.hire(employee)
+    super.hire(employee);
     if (this.reports.length === 0) {
-      this.title = 'Not a manager';
+      this.title = "Not a manager";
     }
     if (this.reports.length >= 1 && this.reports.length <= 3) {
-      this.title = 'Barely Manager';
+      this.title = "Barely Manager";
     }
     if (this.reports.length >= 4 && this.reports.length <= 10) {
-      this.title = 'Mostly Manager';
+      this.title = "Mostly Manager";
     }
     if (this.reports.length >= 11 && this.reports.length <= 50) {
-      this.title = 'Manager';
+      this.title = "Manager";
     }
     if (this.reports.length >= 51 && this.reports.length <= 100) {
-      this.title = 'Manager Plus';
+      this.title = "Manager Plus";
     }
     if (this.reports.length > 101) {
-      this.title = 'Bestest Manager';
+      this.title = "Bestest Manager";
     }
   }
   fire(index) {
-    super.fire(index)
+    super.fire(index);
     this.bonus += 100;
   }
 }
@@ -157,21 +157,21 @@ class ProgressiveManager extends Manager {
 //Code Here
 class Machine {
   constructor() {
-  this.widgets_made_count = 0
-  this.wear_and_tear_count = 0
-  this.needs_reboot = false 
-}
-makeWidgets(num) { 
-  this.widgets_made_count += num
-  this.wear_and_tear_count = Math.floor(this.widgets_made_count/50)
-}
-fixMachine() {
-  this.needs_reboot = true 
-}
-reboot() {
-return () => {
-  this.wear_and_tear_count -=10
-  this.needs_reboot = false 
-}
-}
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+  makeWidgets(num) {
+    this.widgets_made_count += num;
+    this.wear_and_tear_count = Math.floor(this.widgets_made_count / 50);
+  }
+  fixMachine() {
+    this.needs_reboot = true;
+  }
+  reboot() {
+    return () => {
+      this.wear_and_tear_count -= 10;
+      this.needs_reboot = false;
+    };
+  }
 }

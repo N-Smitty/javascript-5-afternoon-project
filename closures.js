@@ -23,13 +23,13 @@ function outer() {
 */
   
 // Code Here
-
+let inner = outer()
 
 
 //Once you do that, invoke inner.
 
 //Code here
-
+inner();
 
 ////////// PROBLEM 2 //////////
 
@@ -51,8 +51,8 @@ function callFriend(name) {
 */
 
 //Code Here
-
-
+let callJake = callFriend('Jake')
+callJake(435-555-9248)
 
 ////////// PROBLEM 3 //////////
 
@@ -122,18 +122,13 @@ function motivation( firstname, lastname ) {
   var welcomeText = "You're doing awesome, keep it up";
 
   function message() {
-    return ` ${welcomeText} ${firstname} ${lastname}. `
+    return `${welcomeText} ${firstname} ${lastname}.`
   }
-
-  // code message function here.
-
   //Uncomment this to return the value of your message function
   return message;
 }
 
 var greeting = motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
-
-
 
 ////////// PROBLEM 6 //////////
 
@@ -178,11 +173,12 @@ function secretNumber() {
   var secret = 143;
 
   return {
-    // Code 
-    
-
-
-
+addToSecret(num) {
+  return secret += num
+},
+takeAwayFromSecret(num) {
+  return secret -= num
+}
   }
 }
 
@@ -205,7 +201,7 @@ function secretNumber() {
 */
 
 function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 5; i++) {
     setTimeout(function() {
       console.log(i);
     }, i * 1000);
